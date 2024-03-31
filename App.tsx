@@ -11,7 +11,7 @@ import Home from './src/screen/Home';
 
 const Stack = createStackNavigator();
 
-const App1 = () => {
+const App = () => {
   return (
     <NavigationContainer>
       <AuthProvider>
