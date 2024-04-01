@@ -1,44 +1,33 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { productsCardProps } from "../../../Type";
 
-interface BicycleCardProps {
-  bike: {
-    _id: string;
-    name: string;
-    image: string;
-    description: string;
-    price: number;
-    originalPrice: number;
-    discountPercentage: number;
-    stockQuantity: number;
-    isNewProduct: boolean;
-  };
-}
 
-const BicycleCard: React.FC<BicycleCardProps> = ({ bike }) => {
+
+const ProductsCard: React.FC<productsCardProps> = ({ product }) => {
   return (
     <TouchableOpacity style={styles.cardContainer}>
       <View style={styles.imageContainer}>
-        <Image source={{ uri: bike.image }} style={styles.image} 
+        <Image source={{ uri: product.image }} style={styles.image} 
             resizeMode="cover"
         />
-        {bike.discountPercentage > 0 && (
+        {product.discountPercentage > 0 && (
           <View style={styles.discountContainer}>
-            <Text style={styles.discountText}>{bike.discountPercentage}% OFF</Text>
+            <Text style={styles.discountText}>{product.discountPercentage}% OFF</Text>
           </View>
         )}
-        <Text style={styles.stock}>{bike.stockQuantity} in stock</Text>
+        <Text style={styles.stock}>{product.stockQuantity} in stock</Text>
       </View>
       <View style={styles.content}>
         <Text style={styles.name}>
-            {bike.name.length > 20 ? bike.name.substring(0, 16) + ".." : bike.name}
+            {product.name.length > 20 ? product.name.substring(0, 16) + ".." : product.name}
 
         </Text>
         <View style={styles.priceContainer}>
-          {bike.discountPercentage > 0 && (
-            <Text style={styles.discountedPrice}>${bike.originalPrice}</Text>
+          {product.discountPercentage > 0 && (
+            <Text style={styles.discountedPrice}>${product.originalPrice}</Text>
           )}
-          <Text style={styles.price}>${bike.price}</Text>
+          <Text style={styles.price}>${product.price}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -68,7 +57,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 5,
     right: 5,
-    backgroundColor: "#F59E0B",
+    backgroundColor: "#ff9133",
     paddingVertical: 3,
     paddingHorizontal: 8,
     borderRadius: 5,
@@ -121,4 +110,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BicycleCard;
+export default ProductsCard;
