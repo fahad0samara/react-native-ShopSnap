@@ -7,13 +7,13 @@ export  const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       paddingHorizontal: 20,
-      backgroundColor: '#3498db',
+      backgroundColor: '#ff9133',
     },
     title: {
       fontSize: 24,
       fontWeight: 'bold',
       marginBottom: 20,
-      color: '#fff', // Change the text color to white
+      color: '#fff', 
     },
     input: {
       width: '100%',
@@ -31,7 +31,7 @@ export  const styles = StyleSheet.create({
     },
     loginText: {
       marginTop: 10,
-      color: '#fff', // Change the text color to white
+      color: '#fff', 
       textDecorationLine: 'underline',
     },
   });
