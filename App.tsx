@@ -7,6 +7,7 @@ import SplashScreen from './src/screen/SplashScreen';
 import LoginScreen from './src/screen/LoginScreen';
 import RegisterScreen from './src/screen/RegisterScreen';
 import Home from './src/screen/Home';
+import StartScreen from './src/screen/StartScreen';
 
 
 const Stack = createStackNavigator();
@@ -15,7 +16,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <AuthProvider>
-        <AppNavigation />
+        <StartScreen />
       </AuthProvider>
     </NavigationContainer>
   );
