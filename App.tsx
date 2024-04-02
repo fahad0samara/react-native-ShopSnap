@@ -8,7 +8,8 @@ import LoginScreen from './src/screen/LoginScreen';
 import RegisterScreen from './src/screen/RegisterScreen';
 import StartScreen from './src/screen/StartScreen';
 import Profile from './src/screen/Profile';
-import Home from './src/screen/Home';
+import Home from './src/screen/Home/Home';
+import TabNavigator from './src/Navigation/TabNavigator';
 
 
 const Stack = createStackNavigator();
@@ -17,7 +18,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <AuthProvider>
-        <Home/>
+        <TabNavigator/>
       </AuthProvider>
     </NavigationContainer>
   );

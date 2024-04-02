@@ -14,11 +14,11 @@ import IonIcon from "react-native-vector-icons/Ionicons";
 
 import axios from "axios";
 
-import API_URL from "../apiConfig";
-import { products } from "../Type";
-import Category from "./Home/components/Category";
-import ProductsCard from "./Home/components/ProductsCard";
-import CouponCards from "./Home/CouponCards";
+import API_URL from "../../apiConfig";
+import { products } from "../../Type";
+import Category from "./components/Category";
+import ProductsCard from "./components/ProductsCard";
+import CouponCards from "./components/CouponCards";
 
 const Home: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState("Electronics");

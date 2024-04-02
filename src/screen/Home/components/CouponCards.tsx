@@ -7,13 +7,13 @@ const coupons = [
     id: 1,
     title: "50% Off",
     description: "Use code SAVE50",
-    image: require("../../../assets/Coupons0.png"),
+    image: require("../../../../assets/Coupons0.png"),
   },
   {
     id: 2,
     title: "Free Shipping",
     description: "On orders over $50",
-    image: require("../../../assets/free.png"),
+    image: require("../../../../assets/free.png"),
   },
 ];
 
