@@ -14,7 +14,7 @@ const TabNavigator = () => {
         tabBarActiveTintColor: "#ffffff",
         tabBarInactiveTintColor: "#ffffff",
         tabBarIcon: ({ color, focused }) => {
-          let iconName;
+          let iconName; 
 
             if (route.name === "Home") {
                 iconName = focused ? "home" : "home-outline";

@@ -1,16 +1,36 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import { productsCardProps } from "../../../Type";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 
+interface ProductsCardProps {
+  product: {
+    _id: string;
+    name: string;
+    image: string;
+    description: string;
+    price: number;
+    originalPrice: number;
+    discountPercentage: number;
+    stockQuantity: number;
+    isNewProduct: boolean;
+  };
+}
 
-const ProductsCard: React.FC<productsCardProps> = ({ product }) => {
+
+const ProductsCard: React.FC<ProductsCardProps> = ({ product }) => {
+  const navigation = useNavigation<StackNavigationProp<any, 'DetailScreen'>>();
+
+  const handleCardPress = () => {
+    navigation.navigate("DetailScreen", { product });
+
+  };
+
   return (
-    <TouchableOpacity style={styles.cardContainer}>
+    <TouchableOpacity style={styles.cardContainer} onPress={handleCardPress}>
       <View style={styles.imageContainer}>
-        <Image source={{ uri: product.image }} style={styles.image} 
-            resizeMode="cover"
-        />
+        <Image source={{ uri: product.image }} style={styles.image} resizeMode="cover" />
         {product.discountPercentage > 0 && (
           <View style={styles.discountContainer}>
             <Text style={styles.discountText}>{product.discountPercentage}% OFF</Text>
@@ -20,8 +40,7 @@ const ProductsCard: React.FC<productsCardProps> = ({ product }) => {
       </View>
       <View style={styles.content}>
         <Text style={styles.name}>
-            {product.name.length > 20 ? product.name.substring(0, 16) + ".." : product.name}
-
+          {product.name.length > 20 ? product.name.substring(0, 16) + ".." : product.name}
         </Text>
         <View style={styles.priceContainer}>
           {product.discountPercentage > 0 && (
@@ -33,6 +52,7 @@ const ProductsCard: React.FC<productsCardProps> = ({ product }) => {
     </TouchableOpacity>
   );
 };
+
 
 const styles = StyleSheet.create({
   cardContainer: {

@@ -10,6 +10,7 @@ import StartScreen from './src/screen/StartScreen';
 import Profile from './src/screen/Profile';
 import Home from './src/screen/Home/Home';
 import TabNavigator from './src/Navigation/TabNavigator';
+import DetailScreen from './src/screen/Home/DetailScreen';
 
 
 const Stack = createStackNavigator();
@@ -18,7 +19,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <AuthProvider>
-        <TabNavigator/>
+        <AppNavigation />
       </AuthProvider>
     </NavigationContainer>
   );
@@ -28,7 +29,12 @@ const AppNavigation = () => {
   const { user } = useAuth();
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      initialRouteName="Splash"
+      screenOptions={{
+    headerShown: false 
+      }}
+    >
       <Stack.Screen name="Splash" component={SplashScreen} 
       options={{ headerShown: false }}
       />
@@ -42,9 +48,12 @@ const AppNavigation = () => {
         <Stack.Screen name="Register" component={RegisterScreen}
         options={{ headerShown: false }}
          />
-              <Stack.Screen name="Home" component={Home}
+              <Stack.Screen name="TabNavigator" component={TabNavigator}
         options={{ headerShown: false }}
+        
          />
+             <Stack.Screen name="DetailScreen" component={DetailScreen} />
+
         </>
 
       

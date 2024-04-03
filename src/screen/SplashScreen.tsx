@@ -9,7 +9,7 @@ const SplashScreen = ({ navigation }) => {
     if (user) {
       navigation.replace('Home');
     } else {
-      navigation.replace('Login');
+      navigation.replace('TabNavigator');
     }
   }, [user]);
 
