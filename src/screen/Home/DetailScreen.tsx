@@ -18,23 +18,29 @@ interface Product {
   isNewProduct: boolean;
 }
 
-const DetailScreen: React.FC<DetailScreenProps> = ({ route }) => {
+const DetailScreen: React.FC<{ route: { params: { product: Product } }, navigation: any }> = ({ route, navigation }) => {
   const { product } = route.params;
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
+        <TouchableOpacity 
+        onPress={() => navigation.goBack()} 
+        style={styles.backButton}>
           <Ionicons name="arrow-back" size={24} color="#fff" />
         </TouchableOpacity>
         {product.discountPercentage > 0 && (
-          <Text style={styles.discount}>Save {product.discountPercentage}%</Text>
+          <Text style={styles.discount}>
+            Save {product.discountPercentage}%
+          </Text>
         )}
-        {product.isNewProduct && (
-          <Text style={styles.newProduct}>New!</Text>
-        )}
+        {product.isNewProduct && <Text style={styles.newProduct}>New!</Text>}
       </View>
-      <Image source={{ uri: product.image }} style={styles.image} resizeMode="contain" />
+      <Image
+        source={{ uri: product.image }}
+        style={styles.image}
+        resizeMode="contain"
+      />
       <View style={styles.detailsContainer}>
         <View style={styles.itemHeader}>
           <Text style={styles.itemName}>{product.name}</Text>
@@ -42,10 +48,13 @@ const DetailScreen: React.FC<DetailScreenProps> = ({ route }) => {
         <Text style={styles.description}>{product.description}</Text>
         <View style={styles.priceContainer}>
           {product.originalPrice > 0 && (
-            <Text style={styles.discountedPrice}>Was ${product.originalPrice}</Text>
+            <Text style={styles.discountedPrice}>
+              Was ${product.originalPrice}
+            </Text>
           )}
           <Text style={styles.price}>${product.price}</Text>
         </View>
+        <Text style={styles.stock}>In stock: {product.stockQuantity}</Text>
         <TouchableOpacity style={styles.addButton}>
           <Ionicons name="add-circle-outline" size={24} color="#F59E0B" />
           <Text style={styles.addButtonText}>Add to Cart</Text>
@@ -82,17 +91,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 20,
   },
+  newProduct: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
+    backgroundColor: "#000",
+    color: "#fff",
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 20,
+  },
   image: {
     width: "100%",
     height: 400,
-    marginTop: 10,
+    marginTop: 5,
   },
   detailsContainer: {
     backgroundColor: "#F59E0B",
     borderTopLeftRadius: 60,
     borderTopRightRadius: 60,
     padding: 20,
-    marginTop: -20,
     flex: 1,
   },
   itemHeader: {
@@ -101,15 +119,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   itemName: {
-    fontSize: 28,
+    fontSize: 25,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#000",
     marginBottom: 10,
   },
   description: {
     fontSize: 16,
-    color: "#fff",
+    color: "#000",
     marginBottom: 20,
+    
+    
   },
   priceContainer: {
     flexDirection: "row",
@@ -119,38 +139,38 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 22,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#000",
     marginLeft: "auto",
   },
   discountedPrice: {
     fontSize: 18,
     marginRight: 20,
     textDecorationLine: "line-through",
-    color: "#fff",
+    color: "#000",
   },
-  newProduct: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 10,
-    backgroundColor:"#000",
+  stock: {
+    fontSize: 16,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     color: "#fff",
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 20,
+    marginBottom: 20,
+    alignSelf: "flex-start",
   },
   addButton: {
-    backgroundColor: "#fff",
+    backgroundColor: "#000",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 10,
-    borderRadius: 20,
+    borderRadius: 25,
     marginTop: "auto",
   },
   addButtonText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#F59E0B",
+    color: "#fff",
     marginLeft: 10,
   },
 });
