@@ -12,7 +12,7 @@ import Home from './src/screen/Home/Home';
 import TabNavigator from './src/Navigation/TabNavigator';
 import DetailScreen from './src/screen/Home/DetailScreen';
 import { CartProvider } from './src/context/CartContext';
-import CartScreen from './src/screen/CartScreen';
+import CartScreen from './src/screen/cart/CartScreen';
 
 
 const Stack = createStackNavigator();

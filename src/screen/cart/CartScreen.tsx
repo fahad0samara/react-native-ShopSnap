@@ -9,8 +9,8 @@ import {
   FlatList,
 } from "react-native";
 import IonIcon from "react-native-vector-icons/Ionicons";
-import { useCart } from "../context/CartContext";
-import { ProdactCardProps, SubtotalProps } from "../Type";
+import { useCart } from "../../context/CartContext";
+import { ProdactCardProps, SubtotalProps } from "../../Type";
 
 const Subtotal: React.FC<SubtotalProps> = ({ subtotal, shipping, total }) => {
   return (
