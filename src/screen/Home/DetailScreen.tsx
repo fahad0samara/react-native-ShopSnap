@@ -2,24 +2,20 @@ import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-interface DetailScreenProps {
-  route: { params: { product: Product } };
-}
+import { useCart } from "../../context/CartContext";
+import { Product } from "../../Type";
 
-interface Product {
-  _id: string;
-  name: string;
-  image: string;
-  description: string;
-  price: number;
-  originalPrice: number;
-  discountPercentage: number;
-  stockQuantity: number;
-  isNewProduct: boolean;
-}
+
+
 
 const DetailScreen: React.FC<{ route: { params: { product: Product } }, navigation: any }> = ({ route, navigation }) => {
   const { product } = route.params;
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
+
 
   return (
     <View style={styles.container}>
@@ -55,9 +51,13 @@ const DetailScreen: React.FC<{ route: { params: { product: Product } }, navigati
           <Text style={styles.price}>${product.price}</Text>
         </View>
         <Text style={styles.stock}>In stock: {product.stockQuantity}</Text>
-        <TouchableOpacity style={styles.addButton}>
+        <TouchableOpacity
+          onPress={handleAddToCart}
+         style={styles.addButton}>
           <Ionicons name="add-circle-outline" size={24} color="#F59E0B" />
-          <Text style={styles.addButtonText}>Add to Cart</Text>
+          <Text style={styles.addButtonText}
+       
+          >Add to Cart</Text>
         </TouchableOpacity>
       </View>
     </View>

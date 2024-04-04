@@ -11,6 +11,8 @@ import Profile from './src/screen/Profile';
 import Home from './src/screen/Home/Home';
 import TabNavigator from './src/Navigation/TabNavigator';
 import DetailScreen from './src/screen/Home/DetailScreen';
+import { CartProvider } from './src/context/CartContext';
+import CartScreen from './src/screen/CartScreen';
 
 
 const Stack = createStackNavigator();
@@ -18,10 +20,12 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <AuthProvider>
+    <AuthProvider>
+      <CartProvider>
         <AppNavigation />
-      </AuthProvider>
-    </NavigationContainer>
+      </CartProvider>
+    </AuthProvider>
+  </NavigationContainer>
   );
 };
 
@@ -53,7 +57,7 @@ const AppNavigation = () => {
         
          />
              <Stack.Screen name="DetailScreen" component={DetailScreen} />
-
+             <Stack.Screen name="CartScreen" component={CartScreen} />
         </>
 
       

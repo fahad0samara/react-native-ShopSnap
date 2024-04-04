@@ -1,16 +1,23 @@
+
+export interface Product {
+  _id: string;
+  name: string;
+  image: string;
+  description: string;
+  price: number;
+  originalPrice: number;
+  discountPercentage: number;
+  stockQuantity: number;
+  isNewProduct: boolean;
+}
+
+
+
 export interface productsCardProps {
-    product: {
-      _id: string;
-      name: string;
-      image: string;
-      description: string;
-      price: number;
-      originalPrice: number;
-      discountPercentage: number;
-      stockQuantity: number;
-      isNewProduct: boolean;
-    };
+  Product: {
+    Product: any
   }
+}
 
   export interface products {
     _id: string;
@@ -27,5 +34,24 @@ export interface productsCardProps {
     createdAt: string;
     updatedAt: string;
     __v: number;
+  }
+
+  export interface ProdactCardProps {
+    item: {
+      _id: string;
+      name: string;
+      image: string;
+      price: number;
+      quantity: number;
+    };
+    onRemove: (itemId: string) => void;
+    onDecreaseQuantity: (itemId: string) => void;
+    onIncreaseQuantity: (itemId: string) => void;
+  }
+
+  export interface SubtotalProps {
+    subtotal: number;
+    shipping: number;
+    total: number;
   }
   
