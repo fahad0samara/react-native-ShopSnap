@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { View, StyleSheet } from "react-native";
 import Home from "../screen/Home/Home";
 import CartScreen from "../screen/cart/CartScreen";
+import Foo from "../screen/Foo";
 
 const Tab = createBottomTabNavigator();
 
@@ -39,7 +40,7 @@ const TabNavigator = () => {
       })}
     >
       <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="search" component={Home} />
+        <Tab.Screen name="search" component={Foo} />
       <Tab.Screen name="Cart" component={CartScreen} />
       <Tab.Screen name="Profile" component={Home} />
 

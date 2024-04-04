@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { useCart } from "../../context/CartContext";
 import { Product } from "../../Type";
+import { useToast } from "../../utils/ToastContext";
 
 
 
@@ -11,9 +12,15 @@ import { Product } from "../../Type";
 const DetailScreen: React.FC<{ route: { params: { product: Product } }, navigation: any }> = ({ route, navigation }) => {
   const { product } = route.params;
   const { addToCart } = useCart();
+  const { showToast } = useToast();
+
+
 
   const handleAddToCart = () => {
     addToCart(product);
+    showToast("Product added to cart");
+
+
   };
 
 
