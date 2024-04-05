@@ -4,7 +4,6 @@ import { useAuth } from '../context/AuthContext';
 import { validateEmail, validatePassword, getErrorText } from '../utils/utils';
 import { styles } from '../styles/styles'; 
 
-
 const LoginScreen = ({ navigation }) => {
   const { signIn } = useAuth();
   const [email, setEmail] = useState('');
@@ -33,6 +32,8 @@ const LoginScreen = ({ navigation }) => {
 
     try {
       await signIn(email, password);
+      // Navigate to the home screen or any other screen after successful login
+      navigation.navigate('TabNavigator'); // Change 'TabNavigator' to the appropriate screen name
     } catch (error) {
       const errorMessage = getErrorText(error.code);
       Alert.alert('Error', errorMessage);
@@ -63,23 +64,13 @@ const LoginScreen = ({ navigation }) => {
         secureTextEntry
       />
       {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
-      <Button title="Login" onPress={handleLogin}
-      color={'#000'}
-
-
-
-       disabled={loading} />
-
+      <Button title="Login" onPress={handleLogin} color={'#000'} disabled={loading} />
       <TouchableOpacity onPress={handleRegister}>
-        <Text style={styles.loginText}>
-          Don't have an account? Register
-        </Text>
+        <Text style={styles.loginText}>Don't have an account? Register</Text>
       </TouchableOpacity>
       {loading && <ActivityIndicator size="large" color="#4CAF50" />}
     </View>
   );
 };
-
-
 
 export default LoginScreen;

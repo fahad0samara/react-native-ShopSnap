@@ -32,14 +32,14 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       // Automatically hide the toast after a certain duration
       setTimeout(() => {
         hideToast();
-      }, 3000);
+      }, 2000);
     });
   };
 
   const hideToast = () => {
     Animated.timing(fadeAnim, {
       toValue: 0,
-      duration: 300,
+      duration: 400,
       useNativeDriver: true,
     }).start(() => {
       setToastMessage(null);

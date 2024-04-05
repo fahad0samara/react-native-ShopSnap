@@ -1,34 +1,20 @@
-import React, { useEffect } from 'react';
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
-import { useAuth } from '../context/AuthContext';
+import React, { useEffect } from "react";
+import { View, Text, StyleSheet, ActivityIndicator, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { useAuth } from "../context/AuthContext";
 
-const SplashScreen = ({ navigation }) => {
-  const { user, loading } = useAuth(); 
-
-  useEffect(() => {
-    if (user) {
-      navigation.replace('Home');
-    } else {
-      navigation.replace('TabNavigator');
-    }
-  }, [user]);
-
-  if (loading) {
-    return <Loading />;
-  }
+const SplashScreen = () => {
+  const navigation = useNavigation();
+  const { user, checkAuthStatus } = useAuth();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.welcomeText}>Welcome to My App</Text>
-      <ActivityIndicator size="large" color="#0000ff" />
-    </View>
-  );
-};
+      <Image
+        source={require("../../assets/ShopSnap.png")}
+        style={styles.image}
+      />
 
-const Loading = () => {
-  return (
-    <View style={styles.container}>
-      <ActivityIndicator size="large" color="#0000ff" />
+      <ActivityIndicator size="large" color="#ff9133" />
     </View>
   );
 };
@@ -36,11 +22,14 @@ const Loading = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 20,
+    backgroundColor: "#fbeedd",
   },
-  welcomeText: {
-    fontSize: 24,
+  image: {
+    width: "100%",
+    height: "50%",
     marginBottom: 20,
   },
 });
