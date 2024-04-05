@@ -32,7 +32,12 @@ const App = () => {
 };
 
 const AppNavigation = () => {
-  const { user, checkAuthStatus } = useAuth();
+  const { user } = useAuth();
+
+
+  
+
+
 
 
 

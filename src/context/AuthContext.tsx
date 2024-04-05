@@ -25,7 +25,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const auth = getAuth(app);
-  const navigation = useNavigation(); // Initialize useNavigation hook
+    const navigation = useNavigation(); // Initialize useNavigation hook
 
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
       if (user) {
         navigation.navigate('TabNavigator'); // Navigate to TabNavigator if user is authenticated
       } else {
-        navigation.navigate('Splash'); // Navigate to Splash screen if user is not authenticated
+        navigation.navigate('Login'); // Navigate to Splash screen if user is not authenticated
       }
     });
     return () => unsubscribe();
