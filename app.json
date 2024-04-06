@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/ShopSnap.png",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "automatic", 
     "splash": {
       "image": "./assets/ShopSnap.png",
       "resizeMode": "contain",
@@ -20,7 +20,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/ShopSnap.png",
-        "backgroundColor": "#fbeedd"
+        "backgroundColor": "#fbeedd" 
       }
     },
     "web": {
