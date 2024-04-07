@@ -10,7 +10,7 @@
       "image": "./assets/ShopSnap.png",
       "resizeMode": "contain",
       "backgroundColor": "#fbeedd"
-    },
+    }, 
     "assetBundlePatterns": [
       "**/*"
     ],

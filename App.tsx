@@ -14,6 +14,7 @@ import DetailScreen from "./src/screen/Home/DetailScreen";
 import { CartProvider } from "./src/context/CartContext";
 import CartScreen from "./src/screen/cart/CartScreen";
 import { ToastProvider } from "./src/utils/ToastContext";
+import { StatusBar } from "expo-status-bar";
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,9 @@ const App = () => {
       <AuthProvider>
         <CartProvider>
           <ToastProvider>
+            <StatusBar 
+            style={"dark"}
+             />
             <AppNavigation />
           </ToastProvider>
         </CartProvider>
@@ -35,7 +39,7 @@ const AppNavigation = () => {
   const { user } = useAuth();
 
 
-  
+
 
 
 
