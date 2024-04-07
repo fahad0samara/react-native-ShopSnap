@@ -5,7 +5,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
 const StartScreen = ({ navigation }) => {
   const handleStart = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Login'); 
   };
 
   return (
@@ -18,7 +18,7 @@ const StartScreen = ({ navigation }) => {
       />
            <View style={styles.footer}>
         <TouchableOpacity
-         onPress={() => navigation.navigate('Home')}
+          onPress={handleStart}
          style={styles.button}>
           <Text style={styles.buttonText}>Start Shopping</Text>
         </TouchableOpacity>

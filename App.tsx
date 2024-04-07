@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { AuthProvider, useAuth } from "./src/context/AuthContext";
@@ -37,52 +37,35 @@ const App = () => {
 
 const AppNavigation = () => {
   const { user } = useAuth();
+  const [initialRoute, setInitialRoute] = useState('Splash');
 
-
-
-
-
-
-
+  useEffect(() => {
+    // Check if user is authenticated
+    if (user) {
+      setInitialRoute('TabNavigator'); // If authenticated, set initial route to TabNavigator
+    } else {
+      setInitialRoute('StartScreen'); // If not authenticated, set initial route to StartScreen
+    }
+  }, [user]);
 
   return (
     <Stack.Navigator
-      initialRouteName={user ? 'TabNavigator' : 'Splash'} 
+      initialRouteName={initialRoute}
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Stack.Screen
-        name="Splash"
-        component={SplashScreen}
-        options={{ headerShown: false }}
-      />
-      {!user && ( // Render login and register screens if user is not authenticated
-        <>
-          <Stack.Screen
-            name="Login"
-            component={LoginScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Register"
-            component={RegisterScreen}
-            options={{ headerShown: false }}
-          />
-        </>
-      )}
-      {user && ( // Render main app screens if user is authenticated
-        <>
-          <Stack.Screen
-            name="TabNavigator"
-            component={TabNavigator}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen name="DetailScreen" component={DetailScreen} />
-        </>
-      )}
+      <Stack.Screen name="Splash" component={SplashScreen} />
+      <Stack.Screen name="StartScreen" component={StartScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Register" component={RegisterScreen} />
+      <Stack.Screen name="TabNavigator" component={TabNavigator} />
+      <Stack.Screen name="DetailScreen" component={DetailScreen} />
     </Stack.Navigator>
   );
 };
+
+
+
 
 export default App;

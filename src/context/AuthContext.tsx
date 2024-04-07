@@ -28,17 +28,23 @@ export const AuthProvider = ({ children }) => {
     const navigation = useNavigation(); // Initialize useNavigation hook
 
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-      if (user) {
-        navigation.navigate('TabNavigator'); // Navigate to TabNavigator if user is authenticated
-      } else {
-        navigation.navigate('Login'); // Navigate to Splash screen if user is not authenticated
-      }
-    });
-    return () => unsubscribe();
-  }, []);
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        setUser(user);
+        if (user) {
+          navigation.reset({ // Reset navigation stack after logging in
+            index: 0,
+            routes: [{ name: 'TabNavigator' }],
+          });
+        } else {
+          navigation.reset({ // Reset navigation stack after logging out
+            index: 0,
+            routes: [{ name: 'StartScreen' }],
+          });
+        }
+      });
+      return () => unsubscribe();
+    }, []);
 
   const signUp = async (email, password) => {
     await createUserWithEmailAndPassword(auth, email, password);
@@ -50,6 +56,8 @@ export const AuthProvider = ({ children }) => {
 
   const signOutUser = async () => {
     await signOut(auth);
+    navigation.navigate('Login') // Navigate to Login screen after logout
+
   };
 
   const checkAuthStatus = async () => {
