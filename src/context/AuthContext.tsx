@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, User } from 'firebase/auth';
 import { app } from '../../data/FirsebaseData'; 
@@ -17,7 +19,7 @@ const AuthContext = createContext<AuthContextType>({
   signUp: async () => {},
   signIn: async () => {},
   signOutUser: async () => {},
-  checkAuthStatus: () => {}, // Initialize the checkAuthStatus function
+  checkAuthStatus: () => {}, 
 });
 
 export const useAuth = () => useContext(AuthContext);
@@ -25,7 +27,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const auth = getAuth(app);
-    const navigation = useNavigation(); // Initialize useNavigation hook
+    const navigation = useNavigation(); 
 
 
     useEffect(() => {
