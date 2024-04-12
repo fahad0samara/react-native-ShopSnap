@@ -14,6 +14,12 @@ ShopSnap is an e-commerce mobile app that provides users with a convenient way t
 - **Legal Information**: Access privacy policy and terms of service.
 - **Support**: Get in touch with customer support.
 
+
+![Green Minimalist Digital Product Mockups Animated Instagram Story (2)](https://github.com/fahad0samara/React-native.GoShop/assets/90055525/1041f8f9-e9aa-42c2-8242-31c2026d0f5e)
+
+
+
+
 ## Screenshots
 <table>
   <tr>
